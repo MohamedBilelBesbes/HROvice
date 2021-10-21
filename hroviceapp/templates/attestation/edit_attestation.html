@@ -1,0 +1,62 @@
+{% extends 'hrovice/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<br>
+<div style="margin-left: 30px;">
+<table>
+<form
+  class="form"
+  action="{% url 'edit_attestation' idattestation=attestation.pk %}"
+  method="post"
+>
+  {% csrf_token %}
+  <div class="form-group">
+    <label class="control-label">Date of Start :</label>
+    <input
+      type="date"
+      name="dateinit"
+      value="{{dateinit}}"
+      id="dateinit"
+      class="form-control"
+      style="background-color: #d0d4f5 !important;width: 40%;margin-left:50px;"
+    />
+  </div>
+  <div class="form-group">
+    <label class="control-label">Date of End:</label>
+    <input
+    class="form-control" 
+      type="date"
+      value="{{dateend}}"
+      name="dateend"
+      id="dateend"
+      style="background-color: #d0d4f5 !important;width: 40%;margin-left:50px;"
+    />
+  </div>
+  <div class="form-group">
+    <label class="control-label">Title of Internship:</label>
+    <input
+    class="form-control" 
+      type="text"
+      value="{{attestation.title}}"
+      name="title"
+      id="title"
+      style="background-color: #d0d4f5 !important;width: 40%;margin-left:50px;"
+    />
+  </div>
+  <div class="form-group">
+    <label class="control-label">Signer Name:</label>
+    <input type="text" class="form-control" style="background-color: #d0d4f5 !important;width: 40%;margin-left:50px;" value="{{attestation.signer}}" name="signer" id="signer" />
+  </div>
+  <div class="form-group">
+    <label class="control-label">Date of Sign:</label>
+    <input type="date" class="form-control" style="background-color: #d0d4f5 !important;width: 40%;margin-left:50px;" value="{{dateofsign}}" name="dateofsign" id="dateofsign" />
+  </div>
+  <br>
+  <button type="submit" style="margin-left: 400px;" class="btn btn-dark">edit attestation info</button>
+</form>
+</table>
+</div>
+<br>
+{% endblock %}

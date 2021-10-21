@@ -1,0 +1,89 @@
+{% extends 'hrovice/base.html' %} {% load crispy_forms_tags %} {% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'cmapp/styling.css' %}" />
+<div class="container" style="margin-top: 30px">
+  <div class="row">
+    <div class="col-8">
+      <form action="{% url 'create_intern'%}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="control-label">Intern Name</label>
+          <br />
+          <input
+            type="text"
+            class="form-control styleofinput"
+            placeholder="intern Name ....."
+            name="name"
+            id="name"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Intern CIN</label>
+          <input
+            type="text"
+            class="form-control styleofinput"
+            placeholder="Intern CIN ....."
+            name="cin"
+            id="cin"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Intern Email</label>
+          <input
+            type="email"
+            class="form-control styleofinput"
+            placeholder="Intern Email ....."
+            name="email"
+            id="email"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Intern Phone Number</label>
+          <input
+            type="text"
+            class="form-control styleofinput"
+            placeholder="Intern Phone Number ....."
+            name="phonenumber"
+            id="phonenumber"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label class="control-label">Intern School</label>
+          <input
+            type="text"
+            class="form-control styleofinput"
+            placeholder="Intern School ....."
+            name="school"
+            id="school"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn"
+          id="createintern"
+          style="
+            color: white;
+            margin-left: 10px;
+            background-color: rgb(0, 0, 0);
+          "
+        >
+          Create intern
+        </button>
+      </form>
+    </div>
+    <div class="col-4">
+      <br />
+      <br />
+      <img
+        src="http://127.0.0.1:8000/media/intern.jpg"
+        class="img-thumbnail"
+        alt="ovice image"
+      />
+    </div>
+  </div>
+</div>
+{% endblock %}

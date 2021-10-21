@@ -1,0 +1,51 @@
+{% extends 'hrovice/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+<div class="col-6">
+<br>
+    <h2 style="margin-left:50px;">Your coordinates :</h2>
+
+    <div class="col-md-8" style="margin-top:20px;margin-bottom:20px;">
+      <div class="card card-chart" style="border-radius: 30px;">
+        <div class="card-header" style="border-radius: 40px;">Your info, {{user.username}}</div>
+        <div class="card-body">
+          <p class="card-category">
+            Your Username : {{user.username}}
+          </p>
+          <p class="card-category">
+            Your Email : {{user.email}}
+          </p>
+          <div class="row">
+          <div class="col-md-6">
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="{% url 'delete_user' pk=user.username %}" class="btn btn-dark" style="margin-left: 10px;" type="submit" id="header-links"> Delete Account </a>
+          </div>
+          </div>
+          <div class="col-md-6">
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="{% url 'edit_profile' %}" class="btn btn-dark" style="margin-left: 10px;" type="submit" id="header-links"> Edit Account </a>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="card-footer" style="border-radius: 30px;">
+          <div class="stats"> Your profile ID is : {{ user.pk }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</div>
+<div class="col-6">
+<br>
+<video autoplay="autoplay" loop="loop" muted="muted" width="480" height="300" controls>
+  <source src="http://127.0.0.1:8000/media/video.mp4" type="video/mp4">
+</video>
+</div>
+</div>
+  <br>
+</div>
+{% endblock %}

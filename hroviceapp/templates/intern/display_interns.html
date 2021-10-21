@@ -1,0 +1,47 @@
+{% extends 'hrovice/base.html' %} {% load crispy_forms_tags %} {% load static %}
+{% block content %}
+<div class="row" style="background-color:white;margin:80px;border-radius: 30px;">
+  <div class="row" style="margin-top:50px;margin-bottom:80px;margin-left:2px;">
+    {% for intern in interns %}
+    <div class="col-md-4" style="margin-top:20px;margin-bottom:20px;">
+      <div class="card card-chart" style="border-radius: 30px;">
+        <div class="card-header" style="border-radius: 40px;">Intern ID : {{intern.pk}}, a Student in {{intern.school}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Info about the corresponding intern</h5>
+          <p class="card-category">
+            Intern Name: {{intern.name}}
+          </p>
+          <p class="card-category">
+            Intern CIN: {{intern.cin}}
+          </p>
+          <p class="card-category">
+            Intern Email: {{intern.email}}
+          </p>
+          <p class="card-category">
+            Intern Phone Number: {{intern.phonenumber}}
+          </p>
+          <p class="card-category">
+            Intern School: {{intern.school}}
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'display_intern' pk=intern.pk %}"
+              class="btn btn-dark"
+              style="color: white;margin-left: 10px;background-color: rgb(0,0,0);"
+              type="submit"
+              id="header-links"
+            >
+              Display Intern
+            </a>
+          </div>
+        </div>
+        <div class="card-footer" style="border-radius: 30px;">
+          <div class="stats"> created on {{ intern.created_at }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+  {% endblock %}

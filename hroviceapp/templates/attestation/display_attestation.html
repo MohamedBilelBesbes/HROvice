@@ -1,0 +1,110 @@
+{% extends 'hrovice/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-6">
+    <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;">
+      <div class="card card-chart" style="border-radius: 30px;">
+        <div class="card-header" style="border-radius: 40px;">Attestation with ID : {{attestation.pk}}, it belongs to {{attestation.intern.name}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Info about the corresponding Attestation:</h5>
+          <p class="card-category">
+            Intern Name: {{attestation.intern.name}}
+          </p>
+          <p class="card-category">
+            Intern School: {{attestation.intern.school}}
+          </p>
+          <p class="card-category">
+            Date of Start: {{attestation.dateinit}}
+          </p>
+          <p class="card-category">
+            Date of End: {{attestation.dateend}}
+          </p>
+          <p class="card-category">
+            Internship Title: {{attestation.title}}
+          </p>
+          <p class="card-category">
+            Attestation Signer: {{attestation.signer}}
+          </p>
+          <p class="card-category">
+            Date of Sign: {{attestation.dateofsign}}
+          </p>
+          <div class="row">
+          <div class="col-md-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'display_attestation' pk=attestation.pk %}"
+              class="btn"
+              style="color: white;margin-left: 10px;background-color: rgb(0,0,0);"
+              type="submit"
+              id="header-links"
+            >
+              Redisplay Attestation
+            </a>
+          </div>
+          </div>
+          <div class="col-md-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'edit_attestation' idattestation=attestation.pk %}"
+              class="btn"
+              style="color: white;margin-left: 10px;background-color: rgb(0,0,0);"
+              type="submit"
+              id="header-links"
+            >
+              Edit Attestation
+            </a>
+          </div>
+          </div>
+          <div class="col-md-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'delete_attestation' pk=attestation.pk %}"
+              class="btn"
+              style="color: white;margin-left: 10px;background-color: rgb(0,0,0);"
+              type="submit"
+              id="header-links"
+            >
+              Delete Attestation
+            </a>
+          </div>
+          </div>
+          </div>
+          <br>
+          <div class="row">
+          <div class="col-md-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <a
+              href="{% url 'make_attestation' pk=attestation.pk %}"
+              class="btn"
+              style="color: white;margin-left: 10px;background-color: rgb(0,0,0);"
+              type="submit"
+              id="header-links"
+            >
+              Download
+            </a>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="card-footer" style="border-radius: 30px;">
+          <div class="stats"> created on {{ attestation.created_at }}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="col-4">
+    <br>
+    <br>
+    <img
+        src="http://127.0.0.1:8000/media/person.jpg"
+        class="img-thumbnail"
+        alt="ovice image"
+      />
+    </div>
+    </div>
+
+{% endblock %}

@@ -2,3 +2,4 @@ Django==3.2.7
 django-crispy-forms==1.12.0
 fpdf2==2.4.5
 psycopg2==2.9.1
+gunicorn==20.1.0

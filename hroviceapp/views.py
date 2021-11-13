@@ -14,9 +14,7 @@ from pathlib import Path
 from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
 import mimetypes
-import pathlib
-temp = pathlib.PosixPath
-pathlib.PosixPath = pathlib.WindowsPath
+from pathlib import Path
 
 at = 'Internship Attestation'
 class PDF(FPDF):
@@ -293,7 +291,7 @@ def make_attestation(request, pk):
     pdf.add_page()
     pdf.alias_nb_pages()
     pdf.chapter_body('media//content.txt', signer, name, school, cin, title, dateinit, dateend, dateofsign)
-    pdf.output('media//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf')
+    pdf.output(Path('media//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf'))
     #media_root = os.path.join(Path(__file__).resolve().parent.parent, 'media')
     filepath = 'media' + '//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf'
     thefile = filepath

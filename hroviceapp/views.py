@@ -19,7 +19,7 @@ import mimetypes
 at = 'Internship Attestation'
 class PDF(FPDF):
   def header(self):
-    self.image('/media/ovicelogo.png', 10, 8, 25)
+    self.image('//media//ovicelogo.png', 10, 8, 25)
     self.set_font('courier', '', 8)
     self.set_text_color(169, 169, 169)
     #self.cell(0, 5, str(dateofsign)[:10], align='R')

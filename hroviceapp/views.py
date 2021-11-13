@@ -19,7 +19,7 @@ import mimetypes
 at = 'Internship Attestation'
 class PDF(FPDF):
   def header(self):
-    self.image('media\\ovicelogo.png', 10, 8, 25)
+    self.image('/media/ovicelogo.png', 10, 8, 25)
     self.set_font('courier', '', 8)
     self.set_text_color(169, 169, 169)
     #self.cell(0, 5, str(dateofsign)[:10], align='R')
@@ -42,11 +42,11 @@ class PDF(FPDF):
     self.set_draw_color(243, 34, 34)
     self.line(20, 244, 200, 244)
     self.set_text_color(14, 14, 243)
-    with open('media\\englishfooter.txt', 'rb') as ft:
+    with open('/media/englishfooter.txt', 'rb') as ft:
       engtxt = ft.read().decode()
-    with open('media\\japanesefooter.txt', 'rb') as ft:
+    with open('/media/japanesefooter.txt', 'rb') as ft:
       japtxt = ft.read().decode()
-    self.add_font('fireflysung', '', 'media\\fireflysung.ttf', uni=True)
+    self.add_font('fireflysung', '', '/media/fireflysung.ttf', uni=True)
     self.set_font('fireflysung', '', 10)
     self.multi_cell(0, 5, japtxt, ln = True, align='C')
     self.set_font('courier', '', 11)

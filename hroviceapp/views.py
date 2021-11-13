@@ -290,10 +290,10 @@ def make_attestation(request, pk):
     pdf = PDF('P','mm','Letter')
     pdf.add_page()
     pdf.alias_nb_pages()
-    pdf.chapter_body('media\\content.txt', signer, name, school, cin, title, dateinit, dateend, dateofsign)
-    pdf.output('media\\attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf')
+    pdf.chapter_body('media//content.txt', signer, name, school, cin, title, dateinit, dateend, dateofsign)
+    pdf.output('media//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf')
     media_root = os.path.join(Path(__file__).resolve().parent.parent, 'media')
-    filepath = media_root + '\\attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf'
+    filepath = media_root + '//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf'
     thefile = filepath
     filename = os.path.basename(thefile)
     chunk_size = 8192

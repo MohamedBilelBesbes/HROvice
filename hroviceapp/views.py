@@ -294,6 +294,7 @@ def make_attestation(request, pk):
     filepath = 'media' + '//attestation_'+str(attestation.pk)+'_intern_'+str(intern.pk)+'.pdf'
     thefile = filepath
     filename = os.path.basename(thefile)
+    print(filename)
     pdf.output(filename)
     chunk_size = 8192
     response = StreamingHttpResponse(FileWrapper(open(thefile, 'rb'), chunk_size),

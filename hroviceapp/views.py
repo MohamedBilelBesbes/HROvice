@@ -14,7 +14,9 @@ from pathlib import Path
 from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
 import mimetypes
-
+import pathlib
+temp = pathlib.PosixPath
+pathlib.PosixPath = pathlib.WindowsPath
 
 at = 'Internship Attestation'
 class PDF(FPDF):

@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  django_gunicorn:
+    volumes:
+      - static:/static
+    env_file:
+      - .env
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgresdb
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - django_gunicorn
+  postgresdb:
+    image: postgres:14.0-alpine
+    volumes:
+      - hrovice_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=hrovice
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Bilel1998
+
+volumes:
+  static:
+  hrovice_data:

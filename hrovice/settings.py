@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = 'django-insecure-kbt7&o&d=&*)q*83o2e4kx!e@qzgoa@%^0l%su*nk8_fdsh&1f'
+SECRET_KEY = os.environ.get('SECRET_KEY',"django-insecure-kbt7&o&d=&*)q*83o2e4kx!e@qzgoa@%^0l%su*nk8_fdsh&1f")
+#SECRET_KEY = 'django-insecure-kbt7&o&d=&*)q*83o2e4kx!e@qzgoa@%^0l%su*nk8_fdsh&1f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = os.getenv('DEBUG')
+#DEBUG = True
+DEBUG = os.environ.get('DEBUG',True)
 ALLOWED_HOSTS = ['*']
 
 
@@ -79,12 +79,12 @@ WSGI_APPLICATION = 'hrovice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hrovice',
-        'USER': 'postgres',
-        'PASSWORD': 'Bilel1998',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': os.environ.get('SQL_ENGINE','django.db.backends.postgresql'),
+        'NAME': os.environ.get('SQL_DATABASE','hrovice'),
+        'USER': os.environ.get('SQL_USER','postgres'),
+        'PASSWORD': os.environ.get('SQL_PASSWORD','Bilel1998'),
+        'HOST': os.environ.get('SQL_HOST','postgresdb'),
+        'PORT': os.environ.get('SQL_PORT','5432'),
     }
 }
 

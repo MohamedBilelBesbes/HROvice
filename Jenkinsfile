@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Ansible Stage') {
             steps {
-                sshagent(credentials : ['ansible-ssh-conncetion']) {
+                sshagent(credentials : ['ansible-ssh-connection']) {
                     sh 'ls -l'
                 }
             }

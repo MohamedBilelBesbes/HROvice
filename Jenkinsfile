@@ -4,6 +4,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhubtoken')
     }
     stages {
+        stage('pre Ansible Stage') {
+            sh 'sshpass -p \'ansadmin\' ssh ansadmin@172.31.91.173 ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+        }
         stage('Ansible Stage') {
             steps {
                 sshagent(credentials : ['ansible-ssh-connection']) {

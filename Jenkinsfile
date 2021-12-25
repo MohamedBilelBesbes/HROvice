@@ -5,7 +5,9 @@ pipeline {
     }
     stages {
         stage('pre Ansible Stage') {
-            sh 'sshpass -p \'ansadmin\' ssh ansadmin@172.31.91.173 ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+            steps {
+                sh 'sshpass -p \'ansadmin\' ssh ansadmin@172.31.91.173 ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+            }
         }
         stage('Ansible Stage') {
             steps {

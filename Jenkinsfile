@@ -7,10 +7,10 @@ pipeline {
         stage('Ansible Stage') {
             steps {
                 sshagent(credentials : ['ansible-ssh-connection']) {
-                    sh 'sshpass -p "ansadmin" ssh ansadmin@172.31.91.173'
+                    sh 'sshpass -p "ansadmin" ssh ansadmin@172.31.91.173 /bin/bash <<"EOT"'
                     sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
                     sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
-                    sh 'exit'
+                    sh 'EOT'
                 }
             }
         }

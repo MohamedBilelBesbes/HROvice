@@ -4,6 +4,14 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhubtoken')
     }
     stages {
+        stage('Ansible Stage') {
+            steps {
+                sshUserPrivateKey(credentials : ['ansible-ssh-conncetion']) {
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
+                }
+            }
+        }
         stage('Dockerization') {
             steps {
                 sh 'ls -l'
@@ -11,14 +19,6 @@ pipeline {
                 sh 'docker-compose build'
                 sh 'docker tag hrovice_newdockerization2_web:latest mohamedbilelbesbes/hrovice_trial2'
                 sh 'docker push mohamedbilelbesbes/hrovice_trial2'
-            }
-        }
-        stage('Ansible Stage') {
-            steps {
-                sshagent(credentials : ['ansible-ssh-conncetion']) {
-                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
-                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
-                }
             }
         }
     }

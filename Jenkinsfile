@@ -6,10 +6,12 @@ pipeline {
     stages {
         stage('Ansible Stage') {
             steps {
-                sh 'sshpass -p "ansadmin" ssh -tt ansadmin@172.31.91.173'
-                sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
-                sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
-                sh 'exit'
+                sshagent(credentials : ['ansible-ssh-connection']) {
+                    sh 'sshpass -p 'ansadmin' ssh ansadmin@172.31.91.173'
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
+                    sh 'exit'
+                }
             }
         }
         stage('Dockerization') {

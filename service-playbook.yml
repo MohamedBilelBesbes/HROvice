@@ -1,0 +1,9 @@
+---
+- name: create services for deployment
+  hosts: kubernetes
+  # become: true
+  user: root
+
+  tasks:
+  - name: create services
+    command: kubectl apply -f db-service.yaml,web-service.yaml

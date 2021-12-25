@@ -13,12 +13,12 @@ pipeline {
                 sh 'docker push mohamedbilelbesbes/hrovice_trial2'
             }
         }
-    }
-    stage('Ansible Stage') {
-        steps {
-            sshagent(credentials : ['ansible-ssh-conncetion']) {
-                sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
-                sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
+        stage('Ansible Stage') {
+            steps {
+                sshagent(credentials : ['ansible-ssh-conncetion']) {
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
+                    sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
+                }
             }
         }
     }

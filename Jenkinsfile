@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Ansible Stage') {
             steps {
-                sshUserPrivateKey(credentials : ['ansible-ssh-conncetion']) {
+                sshUserPrivateKey(credentialsId : ['ansible-ssh-conncetion']) {
                     sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
                     sh 'ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
                 }

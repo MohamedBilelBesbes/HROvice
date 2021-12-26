@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Ansible Stage') {
             steps {
+                sh 'sudo -u ansadmin ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/set-playbook.yml'
                 sh 'sudo -u ansadmin ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deploy-playbook.yml'
-                sh 'sudo -u ansadmin ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service-playbook.yml'
             }
         }
     }

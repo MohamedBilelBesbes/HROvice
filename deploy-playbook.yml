@@ -7,3 +7,5 @@
   tasks:
   - name: create deployments
     command: kubectl apply -f db-deployment.yaml,web-deployment.yaml
+  - name: create services
+    command: kubectl apply -f db-service.yaml,web-service.yaml

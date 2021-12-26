@@ -1,0 +1,17 @@
+---
+- name: Create pods using deployment
+  hosts: kubernetes
+  # become: true
+  user: root
+
+  tasks:
+  - name: delete db service
+    command: rm db-service.yaml
+  - name: delete web service
+    command: rm web-service.yaml
+  - name: delete db deployment
+    command: rm db-deployment.yaml
+  - name: delete web deployment
+    command: rm web-deployment.yaml
+  - name: create yaml files
+    command: kompose convert

@@ -8,7 +8,6 @@ services:
     environment:
       - POSTGRES_DB=hrovice
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456
     ports:
       - 5432
   web: 

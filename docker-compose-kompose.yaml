@@ -6,7 +6,6 @@ services:
     environment:
       - POSTGRES_DB=hrovice
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456
     labels:
       kompose.service.type: LoadBalancer
     ports:

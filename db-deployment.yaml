@@ -29,8 +29,6 @@ spec:
         - env:
             - name: POSTGRES_DB
               value: hrovice
-            - name: POSTGRES_PASSWORD
-              value: Bilel1998
             - name: POSTGRES_USER
               value: postgres
           image: postgres

@@ -1,8 +1,0 @@
-[ansible-server]
-localhost
-
-[kubernetes]
-44.195.143.35
-
-[jenkins]
-34.227.131.74

@@ -10,7 +10,7 @@ The system automates attestation generation via a backend service written in Pyt
 
 ---
 
-## ⚙️ Stack & Tooling
+## Stack & Tooling
 
 **Development**
 - Python for PDF generation (fpdf)
